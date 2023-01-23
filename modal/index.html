@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background-image: url("https://public-site.marketing.pandadoc-static.com/app/uploads/templates/2014/02/Fotolia_99922774_Subscription_Monthly_M.jpg");
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            height: 40%;
+            width: 40%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.404);
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+        }
+
+        .box button {
+            padding: 10px;
+        }
+
+        .box button:hover {
+            background-color: grey;
+            color: white;
+            transition: 200ms;
+        }
+
+        .modal {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+        }
+
+        .background_modal {
+            z-index: 2;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            opacity: 0.8;
+            position: absolute;
+
+        }
+
+        .box_modal {
+            height: 40%;
+            width: 40%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.404);
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+        }
+
+        .box_modal button {
+            padding: 10px;
+        }
+
+        .box_modal button:hover {
+            background-color: grey;
+            color: white;
+            transition: 200ms;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="title">
+                <h2>MODAL</h2>
+            </div>
+            <div>
+                <button onclick="openModal()">OPEN MODAL</button>
+            </div>
+        </div>
+        <div class="background_modal"></div>
+        <div class="modal">
+            <div class="box_modal">
+                <h2>HERE IS THE MODAL</h2>
+                <div>
+                    <button onclick="closeModal()">CLOSE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function openModal() {
+        document.querySelector(".background_modal").style.display = "flex"
+        document.querySelector(".modal").style.display = "flex"
+    }
+    function closeModal() {
+        document.querySelector(".background_modal").style.display = "none"
+        document.querySelector(".modal").style.display = "none"
+    }
+</script>
+
+</html>

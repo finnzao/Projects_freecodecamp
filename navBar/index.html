@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NavBar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        body {
+            z-index: -1;
+            font-family: 'Inter', sans-serif;
+            background-color: rgb(186, 186, 199);
+        }
+
+        .navBar {
+            box-shadow: 2px 2px 2px 1px rgba(230, 0, 0, 0.507);
+            display: flex;
+            position: absolute;
+            top: 0;
+            width: 100vw;
+            height: 70px;
+            background-color: grey;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            z-index: -1;
+        }
+
+        .list {
+            display: flex;
+            gap: 30px;
+            text-decoration: none;
+            list-style-type: none;
+        }
+
+        .mobileNav {
+            display: none;
+            cursor: pointer;
+        }
+
+        .list li {
+            cursor: pointer;
+            padding: 15px;
+        }
+
+        .list li:hover {
+            background-color: rgb(186, 186, 199);
+            transition: 1000ms;
+        }
+
+        .mobileMenu {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            position: absolute;
+
+        }
+
+        .listMobiel {
+            background-color: rgb(186, 186, 199);
+            height: 100%;
+            width: 50%;
+            transition: 2000ms;
+
+        }
+
+        .exitMobile {
+            background-color: black;
+            opacity: 0.5;
+            height: 100%;
+            width: 50%;
+        }
+
+        .itens {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            list-style-type: none;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+        .itens li {
+            cursor: pointer;
+            padding: 15px;
+        }
+
+        .itens li:hover {
+            width: 100%;
+            transition: 1000ms;
+            background-color: grey;
+        }
+
+        @media (max-width:768px) {
+            .list {
+                display: none;
+            }
+
+            .mobileNav {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobileMenu">
+        <div class="listMobiel">
+            <ul class="itens">
+                <li>HOME</li>
+                <li>ABOUT</li>
+                <li>PRICE</li>
+            </ul>
+        </div>
+        <div class="exitMobile"></div>
+    </div>
+    <div class="navBar">
+        <div class="icon">ICON HERE</div>
+
+        <div class="menu">
+            <div class="mobileNav"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                    class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
+
+            </div>
+            <ul class="list">
+                <li>HOME</li>
+                <li>ABOUT</li>
+                <li>PRICE</li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    const mobileMenu = document.querySelector(".mobileMenu")
+
+    const closeMenuMobile = document.querySelector(".exitMobile")
+    closeMenuMobile.addEventListener("click", function () {
+        mobileMenu.style.display = "none"
+    })
+    const navToogle = document.querySelector(".mobileNav")
+    navToogle.addEventListener("click", function () {
+        mobileMenu.style.display = "flex"
+    })
+</script>
+
+</html>

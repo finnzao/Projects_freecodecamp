@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <style>
+        .box {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 40%;
+            height: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .container h3 {
+            font-size: 2rem;
+        }
+
+        .container .buttons {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="container">
+            <div class="number">
+                <h3 id="num">0</h3>
+            </div>
+            <div class="buttons">
+                <button class="btn next" id="next">Avançar</button>
+                <button class="btn reset" id="reset">Resetar</button>
+                <button class="btn back" id="back">Voltar</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    /*
+    let btnNext = document.getElementById("next");
+    let btnBack = document.getElementById("back");
+    let btnreset = document.getElementById("reset");
+ 
+    btnNext.addEventListener("click", function () {
+        number += 1
+        console.log(number)
+        showNum.innerText = number
+    })
+ 
+    btnBack.addEventListener("click", function () {
+        number -= 1
+        console.log(number)
+        showNum.innerText = number
+    })
+    btnreset.addEventListener("click", function () {
+        number = 0
+        showNum.innerText = number
+    
+    })
+    /////////////////
+ 
+    */
+    let number = 0
+    let showNum = document.getElementById("num");
+    let colorNum = document.querySelector(".number")
+    //versão mais pratica
+    const btns = document.querySelectorAll(".btn")
+    btns.forEach(function (btnFunction) {
+        btnFunction.addEventListener("click", function (e) {
+            const styles = e.currentTarget.classList;
+            if (styles.contains('back')) {
+                number--
+            } else if (styles.contains('next')) {
+                number++
+            } else if (styles.contains('reset')) {
+                number = 0
+            }
+            if (number < 0) {
+                colorNum.style.color = "red"
+            } else if (number > 0) {
+                colorNum.style.color = "green"
+            } else {
+                colorNum.style.color = "black"
+            }
+            showNum.innerText = number
+        })
+    });
+
+</script>
+
+</html>
