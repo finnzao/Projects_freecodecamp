@@ -17,6 +17,10 @@
             background-color: rgb(255, 255, 255);
         }
 
+        body {
+            overflow-x: hidden;
+        }
+
         .photo_item {
             width: 200px;
             text-align: center;
@@ -24,12 +28,34 @@
             border-radius: 10px;
         }
 
+        .btn-container {
+            display: grid;
+            grid-template-columns: 70px 70px 70px 70px;
+            padding: 10px;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-container button {
+            text-decoration: none;
+            background: transparent;
+            border: 1px solid rgb(1, 89, 189);
+            border-radius: 20px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .btn-container button:hover {
+            background-color: rgb(1, 89, 189);
+            color: white;
+        }
+
         .menu {
 
             width: 100vw;
             min-height: 100vh;
             display: flex;
-
+            margin-bottom: 50px;
             justify-content: flex-start;
             flex-direction: column;
         }
@@ -65,6 +91,24 @@
             display: flex;
             justify-content: space-between;
         }
+
+        @media (max-width:720px) {
+            .btn-container {
+                grid-template-rows: 1fr 1fr;
+                grid-template-columns: 70px 70px;
+            }
+
+            .section-center {
+                display: flex;
+                flex-direction: column;
+                margin: 40px 0px;
+            }
+
+            .menu-item {
+                flex-direction: column;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -73,27 +117,21 @@
         <div class="title">
             <h1>Menu</h1>
             <div class="underline"></div>
+            <div class="btn-container">
+                <!--<button data-id="all" class="filter-btn" type="button">Todos
+                </button>
+                <button data-id="breakfast" class="filter-btn" type="button">Breakfast
+                </button>
+                <button data-id="lunch" class="filter-btn" type="button">Lunch
+                </button>
+                <button data-id="shakes" class="filter-btn" type="button">shakes
+                </button>-->
+            </div>
         </div>
 
         <div class="section-center">
 
-            <article class="menu-item">
-                <img src="" alt="" class="photo_item">
-                <div class="item-info">
-                    <header>
-                        <h4> Bugguer</h4>
-                        <h4 class="price">$20</h4>
-                    </header>
-                    <p class="item-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quasi temporibus eligendi dicta
-                        praesentium consectetur optio molestiae assumenda repellat odio?
-                    </p>
-                </div>
-
-
-            </article>
-
-            <article class="menu-item">
+            <!--<article class="menu-item">
                 <img src="https://wallsdesk.com/wp-content/uploads/2017/01/Fast-Food-Photos.jpg" alt=""
                     class="photo_item">
                 <div class="item-info">
@@ -106,37 +144,8 @@
                         praesentium consectetur optio molestiae assumenda repellat odio?
                     </p>
                 </div>
-            </article>
+            </article>-->
 
-            <article class="menu-item">
-                <img src="https://wallsdesk.com/wp-content/uploads/2017/01/Fast-Food-Photos.jpg" alt=""
-                    class="photo_item">
-                <div class="item-info">
-                    <header>
-                        <h4> Bugguer</h4>
-                        <h4 class="price">$20</h4>
-                    </header>
-                    <p class="item-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quasi temporibus eligendi dicta
-                        praesentium consectetur optio molestiae assumenda repellat odio?
-                    </p>
-                </div>
-            </article>
-
-            <article class="menu-item">
-                <img src="https://wallsdesk.com/wp-content/uploads/2017/01/Fast-Food-Photos.jpg" alt=""
-                    class="photo_item">
-                <div class="item-info">
-                    <header>
-                        <h4> Bugguer</h4>
-                        <h4 class="price">$20</h4>
-                    </header>
-                    <p class="item-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quasi temporibus eligendi dicta
-                        praesentium consectetur optio molestiae assumenda repellat odio?
-                    </p>
-                </div>
-            </article>
 
         </div>
     </section>

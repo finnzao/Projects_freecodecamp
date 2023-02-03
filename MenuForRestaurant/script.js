@@ -21,7 +21,7 @@ const menu = [
         title: "godzilla milkshake",
         category: "shakes",
         price: 6.99,
-        img: ".https://imgs.search.brave.com/R3xels1vz2-WcE1HbCS7R-sp1uqx76onCJRci8TERIk/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9pMS53/cC5jb20vd3d3Lmhh/cHBpbmVzc2lzaG9t/ZW1hZGUubmV0L3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIxLzA1/L1R3by1TdHJhd2Jl/cnJ5LU1pbGtzaGFr/ZXMtaW4tR2xhc3Mt/Q3Vwcy1TcTIuanBn",
+        img: "https://imgs.search.brave.com/R3xels1vz2-WcE1HbCS7R-sp1uqx76onCJRci8TERIk/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9pMS53/cC5jb20vd3d3Lmhh/cHBpbmVzc2lzaG9t/ZW1hZGUubmV0L3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIxLzA1/L1R3by1TdHJhd2Jl/cnJ5LU1pbGtzaGFr/ZXMtaW4tR2xhc3Mt/Q3Vwcy1TcTIuanBn",
         desc: `ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
     },
     {
@@ -76,11 +76,64 @@ const menu = [
 ////
 
 const sectionCenter = document.querySelector('.section-center');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const containerBtn = document.querySelector(".btn-container")
+//load itens
 
 window.addEventListener('DOMContentLoaded', function () {
-    let dislpayMenu = menu.map(function (item) {
+    dislpayMenuItens(menu);
+    dislpayMenuButtons();
+});
 
-        return item;
+function dislpayMenuItens(menuItens) {
+    let dislpayMenu = menuItens.map(function (item) {
+        return `<article class="menu-item">
+        <img src="${item.img}" alt="${item.title}"
+            class="photo_item">
+        <div class="item-info">
+            <header>
+                <h4>${item.title}</h4>
+                <h4 class="price">${item.price}</h4>
+            </header>
+            <p class="item-text">${item.desc}</p>
+        </div>
+    </article>`;
+    });
+    dislpayMenu = dislpayMenu.join('')
+    sectionCenter.innerHTML = dislpayMenu
+}
+
+function dislpayMenuButtons() {
+    const categories = menu.reduce(function (values, item) {
+        if (!values.includes(item.category)) {//se dentro do array values ainda tem a categoria do item atual
+            values.push(item.category);
+        }
+        return values;//retornando as categorias sem repetir 
+    }, ["all"])//Esse é o valor inicial para o array,pois não existe a categoria all na lista de produtos ,ela foi adicionada agora 
+
+    const categoryBtns = categories.map(function (category) {
+        return `<button data-id="${category}" class="filter-btn" type="button">${category}</button>`
+    }).join("");
+    containerBtn.innerHTML = categoryBtns;
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    //filter itens
+    filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            const category = (e.currentTarget.dataset.id)
+
+
+            const menuCategory = menu.filter(function (menuItens) {
+                if (menuItens.category === category) {
+                    return menuItens
+                }
+            });
+
+            if (category === 'all') {
+                dislpayMenuItens(menu)
+            } else {
+                dislpayMenuItens(menuCategory)
+            }
+        })
     })
-
-})
+}
