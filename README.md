@@ -1,2 +1,2 @@
-# https://finnzao.github.io/Projects_freecodecamp/
+# https://finnzao.github.io/freecodecamp_frontend/
 Desafios Js do Freecodecamp 
